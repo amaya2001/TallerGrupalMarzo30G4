@@ -1,6 +1,6 @@
 #include "bsangre.h"
 
 int main(){
-  mostrarMenu();
-  return 0;
+	mostrarMenu();
+  	return 0;
 }
