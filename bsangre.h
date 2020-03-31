@@ -5,9 +5,9 @@
 #define SANMAX 1.5
 
 typedef struct usuario{
-  char nombre[30];
-  char tipo[3];
-  int cantidad;
+	char nombre[30];
+	char tipo[3];
+	int cantidad;
 } usuario;
 
 //Muestra el menú del sistema
@@ -19,16 +19,14 @@ void mostrarUsuario( usuario lista[MAX][MAX] );
 //ejecuta el proceso para realizar un nuevo registro
 void nuevoUsuario( usuario lista[][MAX], usuario* pusuario);
 
-void mostrarDonantes( usuario lista[][MAX], usuario* p_user);
-
 //Devuelve 1 si hay un espacio disponible en el cual ingresar el usuario
-void verificarEspacio(usuario lista[][MAX], int tipo);
+int verificarEspacio(usuario lista[][MAX], int i);
 
 //Registra el struct llenado en nuevoUsuario en la matriz lista
 void guardarNuevoUsuario(usuario lista[][MAX], usuario* pusuario, int i);
 
 //Devuelve el número que corresponde al tipo de sangre
-int numTipo(char usuario.tipo);
+int numTipo( char tipo );
 
-//Devuelve el número que corresponde al tipo de sangre
-int numTipo(char usuario.tipo);
+//Aumenta la cantidad de sangre que el usuario ha donado
+void donarSangre(  usuario lista[MAX][MAX] );

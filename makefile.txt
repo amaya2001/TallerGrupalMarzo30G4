@@ -1,6 +1,0 @@
-exe: main.o bsangre.o
-  gcc -o exe main.o bsangre.o
-bsangre.o: bsangre.c
-  gcc -c bsangre.c
-main.o: main.c
-  gcc -c main.c
