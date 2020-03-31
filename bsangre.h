@@ -25,7 +25,7 @@ void mostrarDonantes( usuario lista[][MAX], usuario* p_user);
 void verificarEspacio(usuario lista[][MAX], int tipo);
 
 //Registra el struct llenado en nuevoUsuario en la matriz lista
-void guardarNuevoUsuario(usuario lista[][MAX], usuario* pusuario);
+void guardarNuevoUsuario(usuario lista[][MAX], usuario* pusuario, int i);
 
 //Devuelve el número que corresponde al tipo de sangre
 int numTipo(char usuario.tipo);
