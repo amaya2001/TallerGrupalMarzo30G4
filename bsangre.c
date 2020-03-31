@@ -32,6 +32,21 @@ void mostrarMenu(){
     } while( opc != 0 );
 }
 
+int numTipo(char usuario.tipo){
+    if (strcmp( "A" , usuario.tipo )  == 0){
+        return 0;
+    }
+    if (strcmp( "B" , usuario.tipo )  == 0){
+        return 1;
+    }   
+    if (strcmp( "O" , usuario.tipo )  == 0){
+        return 2;
+    }
+    if (strcmp( "AB" , usuario.tipo )  == 0){
+        return 3;
+    }
+}
+
 void mostrarUsuario( usuario lista[MAX][MAX] ){
     char buscar[30];
     printf( "Ingrese el nombre del usuario que desea buscar: " );
