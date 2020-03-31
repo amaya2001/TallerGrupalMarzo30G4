@@ -52,42 +52,48 @@ void mostrarUsuario( usuario lista[MAX][MAX] ){
     }
 }   
 
-int verificarEspacio( usuario lista[][MAX], int tipo ){
+int verificarEspacio(usuario lista[][MAX], int i){
     int j;
     for(j = 0; j < MAX; j++){
-        if(Matriz[pusuario->tipo][j].nombre[0] == '\0')
+        if(lista[i][j].nombre[0] == '\0'){
             return 1;
-    } return 0;
+        }
+    }
+    return 0;
 }
 
-void guardarNuevoUsuario(usuario lista[][4], usuario* pusuario){
+void guardarNuevoUsuario(usuario lista[][4], usuario* pusuario, int i){
     int j;
     for(j = 0; j < MAX; j++){
-        if(lista[pusuario->tipo][j].nombre == '\0'){
-            lista[pusuario->tipo][j] = *pusuario;
-        }
+        if(lista[i][j].nombre == '\0')
+            lista[i][j] = *pusuario;
     }
 }
 
 void nuevoUsuario( usuario lista[][MAX], usuario* pusuario){
-    printf("Ingrese el tipo de sangre: ");
-    fflush(stdin);
-    fgets(pusuario->tipo, 3, stdin);
-    printf("\n");
-    if( verificarEspacio( lista, usuario.tipo ) == 1 ){
-        printf("Ingrese el nombre del individuo: ");
-        fflush(stdin);
-        fgets(pusuario->nombre, 30, stdin);
-        printf("\n");
-        do{
+      int i;
+      printf("Ingrese el tipo de sangre: ");
+      fflush(stdin);
+      fgets(pusuario->tipo, 3, stdin);
+      printf("\n");
+      i=numTipo(pusuario->tipo);
+      if (verificarEspacio(lista, i)==1){
+            printf("Ingrese el nombre del individuo: ");
+            fflush(stdin);
+            fgets(pusuario->nombre, 30, stdin);
+            printf("\n");
+
+            do{
             printf("Ingrese la cantidad de sangre a donar: ");
             scanf("%d", &pusuario->cantidad);
             printf("\n");
-        } while(pusuario->cantidad<0 || pusuario->cantidad>SANMAX); 
-        guardarNuevoUsuario(usuario lista[][MAX], usuario* pusuario);
-    } else{
-        printf("Lo sentimos. Ya no hay registros disponibles\n");
-    }
+            }while(pusuario->cantidad<0 || pusuario->cantidad>SANMAX); 
+
+            guardarNuevoUsuario(usuario lista[][MAX], usuario* pusuario, i);
+      }else{
+            printf("Lo sentimos. Ya no hay registros disponibles\n");
+      }
+
 }
 
 void mostrarDonantes( usuario lista[][MAX] ){
