@@ -1,8 +1,6 @@
-all: programa
-programa: Main Bsangre
+programa: main.o bsangre.o
 	gcc -o bsangre main.o bsangre.o
-	bsangre.exe
-Main: main.c bsangre.h
-	gcc -c main.c
-Bsangre: bsangre.c bsangre.h
+bsangre.o: bsangre.c
 	gcc -c bsangre.c
+main.o: main.c 
+	gcc -c main.c
