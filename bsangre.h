@@ -26,7 +26,7 @@ int verificarEspacio(usuario lista[][MAX], int i);
 void guardarNuevoUsuario(usuario lista[][MAX], usuario* pusuario, int i);
 
 //Devuelve el número que corresponde al tipo de sangre
-int numTipo( char tipo );
+int numTipo( usuario* pusuario );
 
 //Aumenta la cantidad de sangre que el usuario ha donado
 void donarSangre(  usuario lista[MAX][MAX] );

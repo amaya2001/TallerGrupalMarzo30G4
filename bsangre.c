@@ -29,17 +29,17 @@ void donarSangre(  usuario lista[MAX][MAX] ){
     }
 }   
 
-int numTipo(char tipo){
-    if (strcmp( "A" , tipo )  == 0){
+int numTipo(usuario* pusuario){
+    if (strcmp( "A" , pusuario->tipo )  == 0){
         return 0;
     }
-    if (strcmp( "B" , tipo )  == 0){
+    if (strcmp( "B" , pusuario->tipo )  == 0){
         return 1;
     }   
-    if (strcmp( "O" , tipo )  == 0){
+    if (strcmp( "O" , pusuario->tipo )  == 0){
         return 2;
     }
-    if (strcmp( "AB" , tipo )  == 0){
+    if (strcmp( "AB" , pusuario->tipo )  == 0){
         return 3;
     }
 }
@@ -70,14 +70,14 @@ void nuevoUsuario( usuario lista[][MAX], usuario* pusuario){
     fflush(stdin);
     fgets(pusuario->tipo, 3, stdin);
     printf("\n");
-    i = numTipo(usuario.tipo);
+    i = numTipo(pusuario);
     if (verificarEspacio(lista, i)==1){
         printf("Ingrese el nombre del individuo: ");
         fflush(stdin);
         fgets(pusuario->nombre, 30, stdin);
         printf("\n");
         pusuario->cantidad=0;
-        guardarNuevoUsuario(usuario lista[][MAX], usuario* pusuario, i);
+        guardarNuevoUsuario(lista, pusuario, i);
     } else{
         printf("Lo sentimos. Ya no hay registros disponibles\n");
     }
@@ -93,7 +93,7 @@ int verificarEspacio(usuario lista[][MAX], int i){
     } return 0;
 }
 
-void guardarNuevoUsuario( usuario lista[][4], usuario* pusuario, int i ){
+void guardarNuevoUsuario( usuario lista[][MAX], usuario* pusuario, int i ){
     int j;
     for(j = 0; j < MAX; j++){
         if(lista[i][j].nombre == '\0'){
