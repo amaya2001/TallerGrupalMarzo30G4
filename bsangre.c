@@ -1,23 +1,23 @@
 //FELIPE----------------------
 #include "bsangre.h"
 
-void donarSangre(  usuario lista[MAX][MAX] ){
-    int aDonar=0;
-    char buscar[30];
+void donarSangre(  Usuario lista[ MAX ][ MAX ] ){
+    int aDonar = 0, i, j, aprov = 0;
+    char buscar[ 30 ];
+
     printf( "Ingrese el nombre del donante.\n" );
     printf( "\n" );
-    fflush ( stdin );
+    fflush( stdin );
     scanf( "%s" , &buscar );
-    int i,j,aprov=0;
-    for( i=0;i<MAX;i++ ){
-        for( j=0;j<MAX;j++ ){
-            if( strcmp( buscar , lista[i][j].nombre ) == 0 ){
+    for( i=0; i < MAX; i++ ){
+        for( j = 0; j < MAX; j++ ){
+            if( strcmp( buscar, lista[ i ][ j ].nombre ) == 0 ){
                 printf( "Se aceptan donaciones entre 350 y 550 ml.\n" );
-                printf( "Ingrese la sangre que desea donar en mililitros: ");
+                printf( "Ingrese la sangre que desea donar en mililitros: " );
                 fflush( stdin );
-                scanf( "%d" , &aDonar );
+                scanf( "%d", &aDonar );
                 if( aDonar >= 350 && aDonar <= 550 ){
-                    lista[i][j].cantidad = aDonar;
+                    lista[ i ][ j ].cantidad = aDonar;
                 } else{
                     printf( "La cantidad de sangre a donar no es valida.\n" );
                 }
@@ -29,33 +29,34 @@ void donarSangre(  usuario lista[MAX][MAX] ){
     }
 }   
 
-int numTipo(usuario* pusuario){
-    if (strcmp( "A" , pusuario->tipo )  == 0){
+int numTipo( Usuario* pUsuario ){
+    if ( strcmp( "A", pUsuario->tipo )  == 0 ){
         return 0;
     }
-    if (strcmp( "B" , pusuario->tipo )  == 0){
+    if ( strcmp( "B", pUsuario->tipo )  == 0 ){
         return 1;
     }   
-    if (strcmp( "O" , pusuario->tipo )  == 0){
+    if ( strcmp( "O", pUsuario->tipo )  == 0 ){
         return 2;
     }
-    if (strcmp( "AB" , pusuario->tipo )  == 0){
+    if ( strcmp( "AB", pUsuario->tipo )  == 0 ){
         return 3;
     }
 }
 //----------------------------------------------
-void mostrarUsuario( usuario lista[MAX][MAX] ){
-    char buscar[30];
+void mostrarUsuario( Usuario lista[ MAX ][ MAX ] ){
+    char buscar[ 30 ];
+    int i, j, aprov = 0;
+
     printf( "Ingrese el nombre del usuario que desea buscar: " );
     printf( "\n" );
-    fflush ( stdin );
-    scanf( "%s" , &buscar );
-    int i,j,aprov=0;
+    fflush( stdin );
+    scanf( "%s", &buscar );
     for( i=0;i<MAX;i++ ){
         for( j=0;j<MAX;j++ ){
-            if( strcmp( buscar , lista[i][j].nombre ) == 0 ){
+            if( strcmp( buscar , lista[ i ][ j ].nombre ) == 0 ){
                 printf( "El usario que usted ha buscado es:\n" );
-                printf( "[ %s , %s , %d ]\n" , lista[i][j].nombre , lista[i][j].tipo , lista[i][j].cantidad );
+                printf( "[ %s, %s, %d ]\n", lista[ i ][ j ].nombre , lista[ i ][ j ].tipo , lista[ i ][ j ].cantidad );
                 aprov++;
             }
         }
@@ -64,48 +65,52 @@ void mostrarUsuario( usuario lista[MAX][MAX] ){
     }
 }   
 //SANTIAGO-----------------------
-void nuevoUsuario( usuario lista[][MAX], usuario* pusuario){
+void nuevoUsuario( Usuario lista[  ][ MAX ], Usuario* pUsuario ){
     int i;
-    printf("Ingrese el tipo de sangre: ");
-    fflush(stdin);
-    fgets(pusuario->tipo, 3, stdin);
-    printf("\n");
-    i = numTipo(pusuario);
-    if (verificarEspacio(lista, i)==1){
-        printf("Ingrese el nombre del individuo: ");
-        fflush(stdin);
-        fgets(pusuario->nombre, 30, stdin);
+
+    printf( "Ingrese el tipo de sangre: " );
+    fflush( stdin );
+    fgets( pUsuario -> tipo, 3, stdin );
+    printf( "\n" );
+    i = numTipo( pUsuario );
+    if (verificarEspacio( lista, i ) == 1 ){
+        printf( "Ingrese el nombre del individuo: " );
+        fflush( stdin );
+        fgets( pUsuario -> nombre, 30, stdin );
         printf("\n");
-        pusuario->cantidad=0;
-        guardarNuevoUsuario(lista, pusuario, i);
+        pUsuario->cantidad = 0;
+        guardarNuevoUsuario( lista, pUsuario, i );
     } else{
-        printf("Lo sentimos. Ya no hay registros disponibles\n");
+        printf( "Lo sentimos. Ya no hay registros disponibles\n" );
     }
 
 }
 
-int verificarEspacio(usuario lista[][MAX], int i){
+int verificarEspacio(Usuario lista[  ][ MAX ], int i){
     int j;
-    for(j = 0; j < MAX; j++){
-        if(lista[i][j].nombre[0] == '\0'){
+
+    for( j = 0; j < MAX; j++ ){
+        if( lista[ i ][ j ].nombre[ 0 ] == '\0' ){
             return 1;
         }
     } return 0;
 }
 
-void guardarNuevoUsuario( usuario lista[][MAX], usuario* pusuario, int i ){
+void guardarNuevoUsuario( Usuario lista[  ][ MAX ], Usuario* pUsuario, int i ){
     int j;
-    for(j = 0; j < MAX; j++){
-        if(lista[i][j].nombre == '\0'){
-            lista[i][j] = *pusuario;
+
+    for( j = 0; j < MAX; j++ ){
+        if( lista[ i ][ j ].nombre == '\0' ){
+            lista[ i ][ j ] = *pUsuario;
         }
     }
 }
 //--------------------------
 void mostrarMenu(){
     int opc;
-    usuario * pusuario;
-    usuario lista[MAX][MAX];
+    Usuario * pUsuario;
+    Usuario lista[ MAX ][ MAX ];
+
     do{
         printf( "\nBienvenido al Banco de Sangre!\n" );
         printf( "Por favor, eliga su opcion\n" );
@@ -121,7 +126,7 @@ void mostrarMenu(){
             case 0:
                 break;
             case 1:
-                nuevoUsuario( lista , pusuario );
+                nuevoUsuario( lista , pUsuario );
                 break;
             case 2:
                 donarSangre( lista );
