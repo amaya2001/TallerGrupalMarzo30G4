@@ -20,13 +20,13 @@ void agregarUsuario( Usuario lista[MAX][MAX], int registro[4] ){
 	Usuario tmpUsuario;
 	printf( "Ingrese el tipo de sangre: " );
 	fflush( stdin );
-	scanf( "%s" , &tmpUsuario.tipo );
+	scanf( "%3s" , &tmpUsuario.tipo );
 	int i;
 	i = numTipo( tmpUsuario );
 	if( registro[i]<4 ){
 		printf( "Ingrese el nombre: " );
 		fflush( stdin );
-		scanf( "%s" , &tmpUsuario.nombre );
+		scanf( "%30s" , &tmpUsuario.nombre );
 		tmpUsuario.cantidad = 0;
 		guardarNuevoUsuario( lista , &tmpUsuario , registro , i );
 		registro[i]++;
@@ -40,7 +40,7 @@ void donarSangre( Usuario lista[ MAX ][ MAX ] ){
 	char buscar[30];
 	printf( "Ingrese el nombre del donante:\n" );
 	fflush( stdin );
-	scanf( "%s" , &buscar );
+	scanf( "%30s" , &buscar );
 	for( i=0;i<MAX;i++ ){
 		for( j=0;j<MAX;j++ ){
 			if( strcmp( buscar, lista[i][j].nombre ) == 0 ){
@@ -65,7 +65,7 @@ void mostrarUsuario( Usuario lista[MAX][MAX] ){
 	int i, j, aprov = 0;
 	printf( "Ingrese el nombre del usuario que desea buscar: " );
 	fflush( stdin );
-	scanf( "%s", &buscar );
+	scanf( "%30s", &buscar );
 	for( i=0;i<MAX;i++ ){
         	for( j=0;j<MAX;j++ ){
         		if( strcmp( buscar , lista[i][j].nombre ) == 0 ){
