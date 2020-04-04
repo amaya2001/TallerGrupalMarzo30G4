@@ -30,17 +30,20 @@ void donarSangre(  Usuario lista[ MAX ][ MAX ] ){
 }   
 
 int numTipo( Usuario* pUsuario ){
-    if ( strcmp( "A", pUsuario->tipo )  == 0 ){
+	printf("%s", pUsuario->tipo);
+    if ( strcmp( "A\n", pUsuario->tipo )  == 0 ){
         return 0;
     }
-    if ( strcmp( "B", pUsuario->tipo )  == 0 ){
+    if ( strcmp( "B\n", pUsuario->tipo )  == 0 ){
         return 1;
     }   
-    if ( strcmp( "O", pUsuario->tipo )  == 0 ){
+    if ( strcmp( "O\n", pUsuario->tipo )  == 0 ){
         return 2;
     }
     if ( strcmp( "AB", pUsuario->tipo )  == 0 ){
         return 3;
+    }else{
+    	return 8;
     }
 }
 //----------------------------------------------
@@ -73,6 +76,7 @@ void nuevoUsuario( Usuario lista[  ][ MAX ], Usuario* pUsuario ){
     fgets( pUsuario -> tipo, 3, stdin );
     printf( "\n" );
     i = numTipo( pUsuario );
+    printf("%i\n", i);
     if (verificarEspacio( lista, i ) == 1 ){
         printf( "Ingrese el nombre del individuo: " );
         fflush( stdin );
@@ -108,9 +112,9 @@ void guardarNuevoUsuario( Usuario lista[  ][ MAX ], Usuario* pUsuario, int i ){
 //--------------------------
 void mostrarMenu(){
     int opc;
-    Usuario * pUsuario;
+    Usuario User;
+    Usuario * pUsuario = & User;
     Usuario lista[ MAX ][ MAX ];
-
     do{
         printf( "\nBienvenido al Banco de Sangre!\n" );
         printf( "Por favor, eliga su opcion\n" );
