@@ -1,5 +1,10 @@
 #include "bsangre.h"
 
+/* Esta muy chevere el README 
+Las funcionalidades  en cuanto a lo que pido estan muy bn al igual que en general
+el código. Revisen los comentarios sobre el tema de la identación y la parte
+de los números mágicos. */
+
 int numTipo( Usuario tmpUsuario ){
 	if ( strcmp( "A", tmpUsuario.tipo )  == 0 ){
 		return 0;
@@ -23,10 +28,10 @@ void agregarUsuario( Usuario lista[MAX][MAX], int registro[4] ){
 	scanf( "%3s" , &tmpUsuario.tipo );
 	int i;
 	i = numTipo( tmpUsuario );
-	if( registro[i]<4 ){
+	if( registro[i]<4 ){ // FIXME:numero mágico
 		printf( "Ingrese el nombre: " );
 		fflush( stdin );
-		scanf( "%30s" , &tmpUsuario.nombre );
+		scanf( "%30s" , &tmpUsuario.nombre ); // FIXME no necesita el &
 		tmpUsuario.cantidad = 0;
 		guardarNuevoUsuario( lista , &tmpUsuario , registro , i );
 		registro[i]++;
@@ -35,6 +40,7 @@ void agregarUsuario( Usuario lista[MAX][MAX], int registro[4] ){
 	}
 }
 
+/* Ojo con la identación en general de esa funcion */
 void donarSangre( Usuario lista[ MAX ][ MAX ] ){
 	int aDonar = 0, i, j, aprov = 0;
 	char buscar[30];
@@ -48,9 +54,9 @@ void donarSangre( Usuario lista[ MAX ][ MAX ] ){
                 		printf( "Ingrese la sangre que desea donar en mililitros: " );
                 		fflush( stdin );
                 		scanf( "%d", &aDonar );
-                		if( aDonar >= 350 && aDonar <= 550 ){
+                		if( aDonar >= 350 && aDonar <= 550 ){ //FIXME: número mágico
                     			lista[i][j].cantidad = aDonar;
-				} else{
+				} else{ //FIXME ojo aqu con la identación de este pedaz y del ++ y el if. No se ve bn
                     			printf( "La cantidad de sangre a donar no es valida.\n" );
 				} aprov++;
                 	}
@@ -60,6 +66,7 @@ void donarSangre( Usuario lista[ MAX ][ MAX ] ){
 	}
 }   
 
+/* Ojo con la identacón aquí también */
 void mostrarUsuario( Usuario lista[MAX][MAX] ){
 	char buscar[30];
 	int i, j, aprov = 0;
@@ -79,6 +86,7 @@ void mostrarUsuario( Usuario lista[MAX][MAX] ){
     	}
 }   
 
+/* Ojo con la identanción aquí también */
 void mostrarMenu(){
 	int opc;
 	int registro[4] = {0};
